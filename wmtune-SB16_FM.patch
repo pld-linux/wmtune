@@ -1,6 +1,6 @@
-diff -uNr wmtune-1.0/sample.wmtunerc wmtune-1.0.1/sample.wmtunerc
+diff -Nur wmtune-1.0/sample.wmtunerc wmtune-1.0-p/sample.wmtunerc
 --- wmtune-1.0/sample.wmtunerc	Sun Jun 28 16:00:25 1998
-+++ wmtune-1.0.1/sample.wmtunerc	Sun Feb 14 18:05:39 1999
++++ wmtune-1.0-p/sample.wmtunerc	Tue Jul 20 15:19:51 1999
 @@ -1,7 +1,7 @@
  # /etc/wmtunerc || ~/.wmtunerc
  # Configuration file for WMTune 
@@ -10,11 +10,29 @@ diff -uNr wmtune-1.0/sample.wmtunerc wmtune-1.0.1/sample.wmtunerc
  
  # note: presets can be as long as 000.000 and will still be used; yet display
  # up to the 100th will be trucated.
-Binary files wmtune-1.0/src/wmgeneral/wmgeneral.o and wmtune-1.0.1/src/wmgeneral/wmgeneral.o differ
-diff -uNr wmtune-1.0/src/wmtune.c wmtune-1.0.1/src/wmtune.c
+diff -Nur wmtune-1.0/src/wmtune.c wmtune-1.0-p/src/wmtune.c
 --- wmtune-1.0/src/wmtune.c	Sun Jun 28 14:00:10 1998
-+++ wmtune-1.0.1/src/wmtune.c	Sun Feb 14 20:08:52 1999
-@@ -55,7 +55,7 @@
++++ wmtune-1.0-p/src/wmtune.c	Tue Jul 20 15:21:53 1999
+@@ -20,17 +20,14 @@
+ 
+ #if !defined Linux
+ #	if (defined NetBSD || defined OpenBSD)
+-#		warning Compiling for NetBSD/OpenBSD using /dev/io style IO.
+ #		include <i386/pio.h>
+ #	else
+ #		if defined FreeBSD
+-#			warning Compiling for FreeBSD using /dev/io style IO.
+ #			include <machine/cpufunc.h>
+ #		endif
+ #	endif
+ #else
+-#	warning Compiling for Linux using ioperm/iopl style IO.
+-#	include <asm/io.h>
++#	include <sys/io.h>
+ #endif
+ 
+ #include <stdlib.h>
+@@ -55,7 +52,7 @@
  #define OFF 0
  #define TRUE 1
  #define FALSE 0
@@ -23,7 +41,16 @@ diff -uNr wmtune-1.0/src/wmtune.c wmtune-1.0.1/src/wmtune.c
  
  #if (defined FreeBSD || defined NetBSD || defined OpenBSD)
  	#define OUTW(word,port)  outw(port,word)
-@@ -740,17 +740,17 @@
+@@ -127,7 +124,7 @@
+ void TestFreq(void);
+ 
+ // Main
+-void main(int argc,char *argv[])
++int main(int argc,char *argv[])
+ {
+ 	myname = argv[0];
+ 	ParseCMDLine(argc,argv);
+@@ -740,17 +737,17 @@
  	{
  		if (v&1) 
  		{
@@ -49,7 +76,7 @@ diff -uNr wmtune-1.0/src/wmtune.c wmtune-1.0.1/src/wmtune.c
  	    }
  	v>>=1;
  	}
-@@ -954,15 +954,15 @@
+@@ -954,15 +951,15 @@
  	int res;
  
  	OUTB(0xf8,rport);
