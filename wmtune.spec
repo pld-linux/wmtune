@@ -44,11 +44,11 @@ make CFLAGS="$RPM_OPT_FLAGS"
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}} \
-	$RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
+	$RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
 
 install -s %{name} $RPM_BUILD_ROOT%{_bindir}
 install sample.wmtunerc $RPM_BUILD_ROOT%{_datadir}/wmtunerc
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
+install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
 
 gzip -9nf README
 
@@ -60,4 +60,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.gz
 %attr(4755,root,root) %{_bindir}/%{name}
 %{_datadir}/wmtunerc
-/etc/X11/applnk/DockApplets/%{name}.desktop
+/usr/X11R6/share/applnk/DockApplets/%{name}.desktop
