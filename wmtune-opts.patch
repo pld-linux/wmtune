@@ -1,0 +1,16 @@
+--- Makefile~	Sun Jun 28 13:43:38 1998
++++ Makefile	Wed Jul 21 14:51:14 1999
+@@ -1,11 +1,12 @@
+ INCDIR	=	-I/usr/X11R6/include
+ LIBDIR	=	-L/usr/X11R6/lib
++CFLAGS 	= 	-O2 -Wall
+ LIBS	=	-lXpm -lXext -lX11
+ OBJS	=	src/wmtune.o \
+ 			src/wmgeneral/wmgeneral.o \
+ 
+ .c.o:
+-	cc -c -O2 -Wall -D$(shell echo `uname -s`) $< -o $*.o $(INCDIR)
++	cc -c $(CFLAGS) -D$(shell echo `uname -s`) $< -o $*.o $(INCDIR)
+ 
+ all: wmtune
+ 
