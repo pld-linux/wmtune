@@ -16,6 +16,7 @@ BuildRequires:	xpm-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define 	_prefix		/usr/X11R6
+%define		_applnkdir	%{_datadir}/applnk
 
 %description
 This program allows user to hear radio stations and to set an alarm
@@ -44,11 +45,11 @@ make CFLAGS="$RPM_OPT_FLAGS"
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}} \
-	$RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
+	$RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
 install -s %{name} $RPM_BUILD_ROOT%{_bindir}
 install sample.wmtunerc $RPM_BUILD_ROOT%{_datadir}/wmtunerc
-install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
 gzip -9nf README
 
@@ -58,6 +59,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.gz
+
 %attr(4755,root,root) %{_bindir}/%{name}
 %{_datadir}/wmtunerc
-/usr/X11R6/share/applnk/DockApplets/%{name}.desktop
+
+%{_applnkdir}/DockApplets/%{name}.desktop
