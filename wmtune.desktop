@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=wmtune
+Name=WmTune
 Comment=Tuner for Radio Cards
 Comment[pl]=Tuner dla kart radiowych
 Exec=wmtune
