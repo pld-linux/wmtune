@@ -14,7 +14,6 @@ URL:		http://windowmaker.mezaway.org/dockapps/wmtune.html
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define 	_prefix		/usr/X11R6
 
 %description
 This program allows user to hear radio stations and to set an alarm if
