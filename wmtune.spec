@@ -7,14 +7,17 @@ Copyright:	GPL
 Vendor:		PLD
 Group:		X11/Window Managers/Tools
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
-Packager:	Jacek Rzêsista <jacek@samm.com.pl>
-Distribution:	PLD
-URL:		http://windowmaker.mezaway.org/dockapps/wmtune.html
-Source:		ftp://ftp.mezaway.org/pub/DockApps/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.mezaway.org/pub/DockApps/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop 
-Patch:		%{name}-SB16_FM.patch
-BuildRoot:	/tmp/%{name}-%{version}
-ExclusiveArch:	i386 i486 i586 i686
+Patch0:		%{name}-SB16_FM.patch
+Patch1:		%{name}-opts.patch
+URL:            http://windowmaker.mezaway.org/dockapps/wmtune.html
+BuildRequires: 	XFree86-devel
+BuildRequires:	xpm-devel
+ExclusiveArch:  %{ix86}
+BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define _prefix	/usr/X11R6
 
 %description
 This program allows user to hear radio stations and to set an alarm
@@ -34,32 +37,29 @@ adres radia na karcie i ustawiæ stacje. Dobrej zabawy !
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p0
 
 %build
-make
+make CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/X11R6/bin
-install -d $RPM_BUILD_ROOT/etc
-install -d $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}
-install -d $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
-install -s  %{name} $RPM_BUILD_ROOT/usr/X11R6/bin
-install sample.wmtunerc $RPM_BUILD_ROOT/etc/wmtunerc
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}} \
+	$RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
 
-gzip -9nf README COPYING
-
-install README.gz $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}
-install COPYING.gz $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}
+install -s %{name} $RPM_BUILD_ROOT%{_bindir}
+install sample.wmtunerc $RPM_BUILD_ROOT%{_datadir}/wmtunerc
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
+
+gzip -9nf README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(0644,root,root)
-%attr(4755,root,root) /usr/X11R6/bin/%{name}
-%doc {README,COPYING}.gz
-/etc/wmtunerc
+%defattr(644,root,root,755)
+%doc README.gz
+%attr(4755,root,root) %{_bindir}/%{name}
+%{_datadir}/wmtunerc
 /etc/X11/applnk/DockApplets/%{name}.desktop
