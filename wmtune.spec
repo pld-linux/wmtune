@@ -14,7 +14,6 @@ URL:		http://windowmaker.mezaway.org/dockapps/wmtune.html
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
 %description
 This program allows user to hear radio stations and to set an alarm if
 his soundcard support this. I've patched the original source to get
@@ -25,11 +24,11 @@ card address and to set up the stations. Enjoy it!
 
 %description -l pl
 Program ten umo¿liwia u¿ywanie radia na karcie d¼wiêkowej oraz
-ustawianie alarmu, je¿eli karta to umo¿liwia. Zmieni³em nieco
+ustawianie alarmu, je¿eli karta to umo¿liwia. Autor zmieni³ nieco
 oryginalne ¼ród³a aby uzyskaæ przestrajanie i wyszukiwanie stacji na
-mojej karcie Vibra16FM. Po instalacji nale¿y wyedytowaæ plik
+swojej karcie Vibra16FM. Po instalacji nale¿y zmodyfikowaæ plik
 /etc/wmtunerc (albo go skopiowaæ do ~./home/.wmtunerc i tam
-wyedytowaæ) aby ustawiæ odpowiedni adres radia na karcie i ustawiæ
+poprawiæ) aby ustawiæ odpowiedni adres radia na karcie i ustawiæ
 stacje. Dobrej zabawy!
 
 %prep
@@ -38,16 +37,17 @@ stacje. Dobrej zabawy!
 %patch1 -p0
 
 %build
-%{__make} CFLAGS="%{rpmcflags}"
+%{__make} \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}} \
-	$RPM_BUILD_ROOT%{_applnkdir}/DockApplets
+	$RPM_BUILD_ROOT%{_desktopdir}/docklets
 
 install %{name} $RPM_BUILD_ROOT%{_bindir}
 install sample.wmtunerc $RPM_BUILD_ROOT%{_datadir}/wmtunerc
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/docklets
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -57,4 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc README sample.wmtunerc
 %attr(4755,root,root) %{_bindir}/%{name}
 %{_datadir}/wmtunerc
-#%{_applnkdir}/DockApplets/%{name}.desktop
+#%{_desktopdir}/docklets/%{name}.desktop
