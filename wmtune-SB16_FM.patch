@@ -1,0 +1,71 @@
+diff -uNr wmtune-1.0/sample.wmtunerc wmtune-1.0.1/sample.wmtunerc
+--- wmtune-1.0/sample.wmtunerc	Sun Jun 28 16:00:25 1998
++++ wmtune-1.0.1/sample.wmtunerc	Sun Feb 14 18:05:39 1999
+@@ -1,7 +1,7 @@
+ # /etc/wmtunerc || ~/.wmtunerc
+ # Configuration file for WMTune 
+ 
+-0x20f		# hex IO address of your radio card, most likely 0x30f or 0x20f
++0x284		# hex IO address of your radio card, most likely 0x30f or 0x20f
+ 
+ # note: presets can be as long as 000.000 and will still be used; yet display
+ # up to the 100th will be trucated.
+Binary files wmtune-1.0/src/wmgeneral/wmgeneral.o and wmtune-1.0.1/src/wmgeneral/wmgeneral.o differ
+diff -uNr wmtune-1.0/src/wmtune.c wmtune-1.0.1/src/wmtune.c
+--- wmtune-1.0/src/wmtune.c	Sun Jun 28 14:00:10 1998
++++ wmtune-1.0.1/src/wmtune.c	Sun Feb 14 20:08:52 1999
+@@ -55,7 +55,7 @@
+ #define OFF 0
+ #define TRUE 1
+ #define FALSE 0
+-#define FCODE(f)    ((int)(((float)(f)-88.0)*40)+0xf6c)
++#define FCODE(f)    ((unsigned long int)(((float)(f))*40)+10486188)
+ 
+ #if (defined FreeBSD || defined NetBSD || defined OpenBSD)
+ 	#define OUTW(word,port)  outw(port,word)
+@@ -740,17 +740,17 @@
+ 	{
+ 		if (v&1) 
+ 		{
+-			OUTW (5,rport);
+-			OUTW (5,rport);
+-			OUTW (7,rport);
+-			OUTW (7,rport);
++			OUTB (5,rport);
++			OUTB (5,rport);
++			OUTB (7,rport);
++			OUTB (7,rport);
+ 		}
+ 		else 
+ 		{
+-			OUTW (1,rport);
+-			OUTW (1,rport);
+-			OUTW (3,rport);
+-			OUTW (3,rport);
++			OUTB (1,rport);
++			OUTB (1,rport);
++			OUTB (3,rport);
++			OUTB (3,rport);
+ 	    }
+ 	v>>=1;
+ 	}
+@@ -954,15 +954,15 @@
+ 	int res;
+ 
+ 	OUTB(0xf8,rport);
+-	usleep(150000);
++	usleep(200000);
+ 	res = (int)inb(rport);
+-	if (res == 0x0fd)
++	if (res==251)
+ 	{
+ 		return 1;				// SIGNAL & STEREO 		(1)
+ 	}
+-	else if (res != 0xff)
++	else if (res != 249)
+ 	{
+-		return 2;				// POSSIBLY MONO :) 	(2)
++		return 1;				// POSSIBLY MONO :) 	(2)
+ 	}
+ 	return 0;					// POSSIBLE SIGNAL LOSS (0)
+ }
