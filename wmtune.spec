@@ -15,7 +15,7 @@ BuildRequires: 	XFree86-devel
 BuildRequires:	xpm-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix	/usr/X11R6
+%define 	_prefix		/usr/X11R6
 
 %description
 This program allows user to hear radio stations and to set an alarm
