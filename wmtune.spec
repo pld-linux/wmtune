@@ -12,7 +12,6 @@ Patch0:		%{name}-SB16_FM.patch
 Patch1:		%{name}-opts.patch
 URL:            http://windowmaker.mezaway.org/dockapps/wmtune.html
 BuildRequires: 	XFree86-devel
-BuildRequires:	xpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix		/usr/X11R6
