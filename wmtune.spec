@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	ftp://ftp.mezaway.org/pub/DockApps/%{name}-%{version}.tar.gz
+# Source0-md5:	fa1589473e46294024238ac82d2e41e3
 Source1:	%{name}.desktop
 Patch0:		%{name}-SB16_FM.patch
 Patch1:		%{name}-opts.patch
