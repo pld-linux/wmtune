@@ -4,4 +4,4 @@ Comment=Tuner for Radio Cards
 Comment[pl]=Tuner dla kart radiowych
 Exec=wmtune
 Terminal=0
-Type=Application
+Type=Application# vi: encoding=utf-8
