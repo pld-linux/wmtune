@@ -49,16 +49,12 @@ install %{name} $RPM_BUILD_ROOT%{_bindir}
 install sample.wmtunerc $RPM_BUILD_ROOT%{_datadir}/wmtunerc
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
-gzip -9nf README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz
-
+%doc README
 %attr(4755,root,root) %{_bindir}/%{name}
 %{_datadir}/wmtunerc
-
 %{_applnkdir}/DockApplets/%{name}.desktop
