@@ -4,7 +4,6 @@ Name:		wmtune
 Version:	1.0
 Release:	1
 Copyright:	GPL
-Vendor:		PLD
 Group:		X11/Window Managers/Tools
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 Source0:	ftp://ftp.mezaway.org/pub/DockApps/%{name}-%{version}.tar.gz
