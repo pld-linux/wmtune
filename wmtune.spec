@@ -39,7 +39,7 @@ adres radia na karcie i ustawiæ stacje. Dobrej zabawy !
 %patch1 -p0
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS"
+%{__make} CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
