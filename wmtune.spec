@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc README sample.wmtunerc
 %attr(4755,root,root) %{_bindir}/%{name}
 %{_datadir}/wmtunerc
-%{_applnkdir}/DockApplets/%{name}.desktop
+#%{_applnkdir}/DockApplets/%{name}.desktop
