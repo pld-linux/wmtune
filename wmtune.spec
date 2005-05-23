@@ -57,4 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc README sample.wmtunerc
 %attr(4755,root,root) %{_bindir}/%{name}
 %{_datadir}/wmtunerc
-#%{_desktopdir}/docklets/%{name}.desktop
+%{_desktopdir}/docklets/%{name}.desktop
