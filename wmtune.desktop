@@ -6,4 +6,5 @@ Comment[pl]=Tuner dla kart radiowych
 Exec=wmtune
 Terminal=false
 Type=Application
+Categories=Applet;
 # vi: encoding=utf-8
