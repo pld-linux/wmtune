@@ -1,5 +1,5 @@
 Summary:	Window Maker Dockable Applet for Sound Cards with FM Radio
-Summary(pl):	Dokowalny aplet dla Window Makera do kart muzycznych z radiem
+Summary(pl.UTF-8):   Dokowalny aplet dla Window Makera do kart muzycznych z radiem
 Name:		wmtune
 Version:	1.0
 Release:	1
@@ -22,13 +22,13 @@ installation you must edit your /etc/wmtunerc file (or copy it to
 ~./home/.wmtunerc and edit there) to set up proper I/O radio on your
 card address and to set up the stations. Enjoy it!
 
-%description -l pl
-Program ten umo¿liwia u¿ywanie radia na karcie d¼wiêkowej oraz
-ustawianie alarmu, je¿eli karta to umo¿liwia. Autor zmieni³ nieco
-oryginalne ¼ród³a aby uzyskaæ przestrajanie i wyszukiwanie stacji na
-swojej karcie Vibra16FM. Po instalacji nale¿y zmodyfikowaæ plik
-/etc/wmtunerc (albo go skopiowaæ do ~./home/.wmtunerc i tam
-poprawiæ) aby ustawiæ odpowiedni adres radia na karcie i ustawiæ
+%description -l pl.UTF-8
+Program ten umoÅ¼liwia uÅ¼ywanie radia na karcie dÅºwiÄ™kowej oraz
+ustawianie alarmu, jeÅ¼eli karta to umoÅ¼liwia. Autor zmieniÅ‚ nieco
+oryginalne ÅºrÃ³dÅ‚a aby uzyskaÄ‡ przestrajanie i wyszukiwanie stacji na
+swojej karcie Vibra16FM. Po instalacji naleÅ¼y zmodyfikowaÄ‡ plik
+/etc/wmtunerc (albo go skopiowaÄ‡ do ~./home/.wmtunerc i tam
+poprawiÄ‡) aby ustawiÄ‡ odpowiedni adres radia na karcie i ustawiÄ‡
 stacje. Dobrej zabawy!
 
 %prep
