@@ -1,5 +1,5 @@
 Summary:	Window Maker Dockable Applet for Sound Cards with FM Radio
-Summary(pl.UTF-8):   Dokowalny aplet dla Window Makera do kart muzycznych z radiem
+Summary(pl.UTF-8):	Dokowalny aplet dla Window Makera do kart muzycznych z radiem
 Name:		wmtune
 Version:	1.0
 Release:	1
